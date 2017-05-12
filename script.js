@@ -11,6 +11,7 @@ $(function(){
       success: function(data, status){
         //$("#displayArea").html();
         var data1 = data.items[0].productUrl;
+      //  $("#displayArea").prepend('<a href='+ data1+'</a>');
         $("#displayArea").prepend(data1);
          console.log(data.items[0].productUrl)
         },
