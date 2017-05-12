@@ -17,7 +17,7 @@ $(function(){
       //  $("#displayArea").prepend('<a href='+ data1+'</a>');
       for(var i=0; i< data_temp.length; i++){
         var data = data_temp[i];
-        $("#displayArea").prepend('<li class="result">'+'<a href="'+data.productUrl+'">"'+data.name+'</a>'+'<br></li>');
+        $("#displayArea").prepend('<ul class="result">'+'<a href="'+data.productUrl+'">"'+data.name+'</a>'+'<br>'+'</ul>');
         // console.log(data.items[0].productUrl);
 
        }
