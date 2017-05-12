@@ -1,8 +1,9 @@
 
 $(function(){
   $("#enter").on("click",function(){
-    var userInput  = $("userInput").val();
-    var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query=electronics';
+    var userInput  = $('#userInput').val();
+    console.log(userInput);
+    var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query='+userInput;
     $.ajax({
       url: walmartUrl,
       dataType: 'jsonp',
