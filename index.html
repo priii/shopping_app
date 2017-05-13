@@ -1,19 +1,68 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
     <title>Grocery App</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="bootstrap/css/small-business.css" rel="stylesheet">
 </head>
 <body>
-  <div>
-    <input type="text" placeholder="Search here" name="userInput" id="userInput" autocomplete="off">
-    <input type="button" name="enter" id="enter" value="enter">
+  <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div>
+                  <input type="text" placeholder="Search here" name="userInput" id="userInput" autocomplete="off">
+                  <input type="button" name="enter" id="enter" value="enter">
+                </div>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
+
+
+  <div class="container">
+    <div class="row">
+            <div class="col-md-4">
+            <h2>walmart</h2>
+            <div id="displayArea"></div>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4" >
+                <h2>Amazon</h2>
+                <div id="amazonDisplay"></div>
+              </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4" >
+                <h2>Target</h2>
+                <div id="targetDisplay"></div>
+              </div>
+            </div>
   </div>
-<div id="displayArea"></div>
+  <!-- jQuery -->
+    <script src="bootstrap/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="knockout.js"></script>
 <script src="script.js"></script>
