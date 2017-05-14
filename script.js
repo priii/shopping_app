@@ -2,6 +2,8 @@
 function loadData(){
   var userInput  = $('#userInput').val();
   var $walmartElem = $("#displayArea");
+  var $amazonElem = $("#amazonDisplay");
+
   $walmartElem.text("");
   // getting walmart api data
     var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query='+userInput;
@@ -26,6 +28,19 @@ function loadData(){
       error: function(data){
         alert("could not load data from walmart.")
       }
+  });
+  // getting amazon url
+  var amazonUrl ='http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&Operation=ItemSearch&AWSAccessKeyId=AKIAJICZAX62A6DHVS6Q&AssociateTag=990d4-20&SearchIndex=Books&Keywords=HarryPotter&ResponseGroup=Images,ItemAttributes,Offers';
+  $.ajax({
+    type: 'GET',
+    dataType: 'jsonp',
+    url: amazonUrl,
+    success: function(data) {
+      console.log("success", data);
+    },
+    error:function(data){
+      $amazonElem.text("Amazon Could not be  loaded ");
+    }
   });
 }
   $("#enter").on("click",function(){
