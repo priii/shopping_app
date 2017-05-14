@@ -5,8 +5,8 @@ function loadData(){
   var $amazonElem = $("#amazonDisplay");
 
   $walmartElem.text("");
-  // getting walmart api data
-    var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query='+userInput;
+  // getting walmart api data reference :https://developer.walmartlabs.com/docs/read/Search_API
+    var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query='+userInput+'&numItems=25';
     $.ajax({
       url: walmartUrl,
       dataType: 'jsonp',
@@ -18,7 +18,7 @@ function loadData(){
         //console.log(data_temp);
         //looping through the all the data
       for(var i=0; i< data_temp.length; i++){
-        var data = data_temp[i];
+                var data = data_temp[i];
         //displaying the product link and images of the product from the data recieved from walmart api url
         $("#displayArea").prepend(`<ul class="result">`+'<img alt="Images" style= "width:128px;height:128px" src='+data.largeImage+'>'+'<a href="'+data.productUrl+'">"'+data.name+'<br>'+'Sale Price: $'+ data.salePrice+'</a>'+'<br>'+'</ul>');
         // console.log(data.items[0].productUrl);
@@ -38,7 +38,7 @@ function loadData(){
     success: function(data) {
       console.log("success", data);
     },
-    error:function(data){
+    error:function(e){
       $amazonElem.text("Amazon Could not be  loaded ");
     }
   });
