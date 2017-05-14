@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-    <title>Grocery App</title>
+    <title>Shopping App</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="style.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="bootstrap/css/small-business.css" rel="stylesheet">
 </head>
@@ -29,8 +29,9 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div>
-                  <input type="text" placeholder="Search here" name="userInput" id="userInput" autocomplete="off">
-                  <input type="button" name="enter" id="enter" value="enter">
+                  <input type="text" class="searchBox" placeholder="Search here" name="userInput" id="userInput" autocomplete="off">
+
+                  <button type="button" id="enter" class="btn btn-primary">Enter</button>
                 </div>
               </div>
               <!-- /.navbar-collapse -->
@@ -41,21 +42,16 @@
 
   <div class="container">
     <div class="row">
-            <div class="col-md-4">
-            <h2>walmart</h2>
+            <div class="col-md-6">
+            <h2>Walmart</h2>
             <div id="displayArea"></div>
             </div>
             <!-- /.col-md-4 -->
-            <div class="col-md-4" >
+            <div class="col-md-6" >
                 <h2>Amazon</h2>
                 <div id="amazonDisplay"></div>
               </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4" >
-                <h2>Target</h2>
-                <div id="targetDisplay"></div>
               </div>
-            </div>
   </div>
   <!-- jQuery -->
     <script src="bootstrap/js/jquery.js"></script>

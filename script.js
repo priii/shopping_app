@@ -1,6 +1,8 @@
 
 function loadData(){
   var userInput  = $('#userInput').val();
+  var $walmartElem = $("#displayArea");
+  $walmartElem.text("");
   // getting walmart api data
     var walmartUrl ='http://api.walmartlabs.com/v1/search?&apiKey=qswmjt3rs66uv5adcpqxhtpp&&query='+userInput;
     $.ajax({
@@ -9,13 +11,16 @@ function loadData(){
       type: 'GET',
       contentType: 'application/json',
       success: function(data, status){
+
         var data_temp = data.items; //  storing the value of the ai datain a temp variable
-        console.log(data_temp);
+        //console.log(data_temp);
         //looping through the all the data
       for(var i=0; i< data_temp.length; i++){
         var data = data_temp[i];
-        $("#displayArea").prepend('<ul class="result">'+'<a href="'+data.productUrl+'">"'+data.name+'</a>'+'<br>'+'</ul>');
+        //displaying the product link and images of the product from the data recieved from walmart api url
+        $("#displayArea").prepend(`<ul class="result">`+'<img alt="Images" style= "width:128px;height:128px" src='+data.largeImage+'>'+'<a href="'+data.productUrl+'">"'+data.name+'<br>'+'Sale Price: $'+ data.salePrice+'</a>'+'<br>'+'</ul>');
         // console.log(data.items[0].productUrl);
+        //console.log(data.largeImage);
        }
         },
       error: function(data){
@@ -23,7 +28,13 @@ function loadData(){
       }
   });
 }
-
   $("#enter").on("click",function(){
     loadData();
   });
+// keyboard enter button operation
+ var value = document.getElementById("userInput");
+  value.onkeyup = function(e) {
+      if(e.keyCode === 13){
+        loadData();
+      }
+    }
