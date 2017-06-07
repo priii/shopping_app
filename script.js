@@ -47,9 +47,9 @@ var ebayUrl ="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-N
           var title = item.title;
           var pic = item.galleryURL;
           var viewitem = item.viewItemURL;
-        // var price = items[i].discountPriceInfo[i].originalRetailPrice[i].__value__;
-         $("#ebayDisplay").prepend(`<ul class="result">`+'<img alt="Images" style= "width:128px;height:128px" src='+pic+'>'+'<a href="'+viewitem+'">"'+title+'<br>'+'</a>'+'<br>'+'</ul>');//'Sale Price: $'+ price+
-
+         var price = item.sellingStatus[0].currentPrice[0]['__value__'];
+         $("#ebayDisplay").prepend(`<ul class="result">`+'<img alt="Images" style= "width:128px;height:128px" src='+pic+'>'+'<a href="'+viewitem+'">"'+title+'<br>'+'Sale Price: $'+ price+'</a>'+'<br>'+'</ul>');//'Sale Price: $'+ price+
+         //console.log(price);
         }
 
           //console.log(items);
