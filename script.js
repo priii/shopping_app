@@ -29,19 +29,41 @@ function loadData(){
         alert("could not load data from walmart.")
       }
   });
-  // getting amazon url
-  var amazonUrl ='http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&Operation=ItemSearch&AWSAccessKeyId=AKIAJICZAX62A6DHVS6Q&AssociateTag=990d4-20&SearchIndex=Books&Keywords=HarryPotter&ResponseGroup=Images,ItemAttributes,Offers';
-  $.ajax({
-    type: 'GET',
-    dataType: 'jsonp',
-    url: amazonUrl,
-    success: function(data) {
-      console.log("success", data);
-    },
-    error:function(e){
-      $amazonElem.text("Amazon Could not be  loaded ");
-    }
+// ebay ajax Request
+var uri = userInput;
+var res = encodeURI(uri);
+var ebayUrl ="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=Priyadha-Shopping-PRD-67a9d82e9-6fa003ca&GLOBAL-ID=EBAY-US&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords="+res+"&paginationInput.entriesPerPage=30";
+
+    //ajax Request
+    $.ajax({
+      url: ebayUrl,
+      dataType: 'JSONP',
+      type: 'GET',
+      contentType: 'application/json',
+      success: function(data, status){
+        var items = data.findItemsByKeywordsResponse[0].searchResult[0].item;
+        for (var i = 0; i < items.length; ++i){
+          var item = items[i];
+          var title = item.title;
+          var pic = item.galleryURL;
+          var viewitem = item.viewItemURL;
+        // var price = items[i].discountPriceInfo[i].originalRetailPrice[i].__value__;
+         $("#ebayDisplay").prepend(`<ul class="result">`+'<img alt="Images" style= "width:128px;height:128px" src='+pic+'>'+'<a href="'+viewitem+'">"'+title+'<br>'+'</a>'+'<br>'+'</ul>');//'Sale Price: $'+ price+
+
+        }
+
+          //console.log(items);
+        //  console.log(items[0].discountPriceInfo[0]);
+          //console.log(items[0].discountPriceInfo[0].originalRetailPrice[0].__value__);
+            //console.log(items[0].galleryURL);
+
+
+        },
+      error: function(data){
+        alert("could not load data from ebay.")
+      }
   });
+
 }
   $("#enter").on("click",function(){
     loadData();
